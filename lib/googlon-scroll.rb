@@ -1,0 +1,7 @@
+require 'googlon-scroll/version'
+require 'googlon-scroll/pseudo_random'
+require 'googlon-scroll/letter'
+require 'googlon-scroll/word'
+require 'googlon-scroll/preposition'
+require 'googlon-scroll/verb'
+require 'googlon-scroll/quiz'
