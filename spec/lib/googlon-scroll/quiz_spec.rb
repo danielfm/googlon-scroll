@@ -44,10 +44,11 @@ module GooglonScroll
     end
 
     describe '#generate_scroll_text!' do
-      let(:scroll_text) { subject.generate_scroll_text! 300 }
+      let(:words) { 300 }
+      let(:scroll_text) { subject.generate_scroll_text! words }
 
       it 'should generate a scroll with the specified number of words' do
-        scroll_text.split(' ').should have(300).items
+        scroll_text.split(' ').length.should == words
       end
 
       it 'should only use valid alphabet letters' do
