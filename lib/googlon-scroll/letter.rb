@@ -26,7 +26,13 @@ module GooglonScroll
     end
 
     def comparator
-      index_of = lambda { |letter| alphabet.index(letter) }
+      indexes = {}
+
+      alphabet.each_with_index do |letter, i|
+        indexes[letter] = i
+      end
+
+      index_of = lambda { |letter| indexes[letter] }
 
       lambda { |word_1, word_2|
         indexes_1 = word_1.chars.collect &index_of

@@ -5,7 +5,7 @@ module GooglonScroll
     end
 
     def random
-      @random
+      @random ||= new_random
     end
   end
 end
