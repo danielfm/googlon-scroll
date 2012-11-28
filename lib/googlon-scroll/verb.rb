@@ -16,16 +16,6 @@ module GooglonScroll
       verb?(word) and valid_first_letter?(word)
     end
 
-    private
-
-    def valid_first_letter?(word)
-      letter.send "#{first_letter_group}?", word[0]
-    end
-
-    def valid_last_letter?(word)
-      letter.send "#{last_letter_group}?", word[-1]
-    end
-
     def word_length
       @word_length ||= random.rand LENGTH_RANGE
     end
@@ -36,6 +26,16 @@ module GooglonScroll
 
     def last_letter_group
       @last_letter_group ||= new_random.rand > LAST_FOO_LETTER_PROB ? :foo : :bar
+    end
+
+    private
+
+    def valid_first_letter?(word)
+      letter.send "#{first_letter_group}?", word[0]
+    end
+
+    def valid_last_letter?(word)
+      letter.send "#{last_letter_group}?", word[-1]
     end
   end
 end

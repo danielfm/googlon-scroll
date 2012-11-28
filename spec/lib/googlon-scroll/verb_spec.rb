@@ -2,14 +2,26 @@ require 'spec_helper'
 
 module GooglonScroll
   describe Verb do
-    # This seed generates the following verb rules:
-    # - Word length must be at least 7
-    # - Last letter must be a bar letter
-    # - Is a subjunctive verb is first letter is a foo letter
     let(:seed) { 123 }
 
     subject do
       Verb.new seed
+    end
+
+    describe 'seed-based rules' do
+      it 'should have at least 7 letters' do
+        subject.word_length.should == 7
+      end
+
+      it 'should end with a bar letter' do
+        subject.last_letter_group.should == :bar
+      end
+
+      context 'subjunctive verbs' do
+        it 'should start with a foo letter' do
+          subject.first_letter_group.should == :foo
+        end
+      end
     end
 
     shared_examples_for 'invalid verb' do

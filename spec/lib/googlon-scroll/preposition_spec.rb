@@ -2,14 +2,24 @@ require 'spec_helper'
 
 module GooglonScroll
   describe Preposition do
-    # This seed generates the following preposition rules:
-    # - Word length must be exactly 5
-    # - Last letter must be a foo letter
-    # - Must not contain the letter 'w'
     let(:seed) { 123 }
 
     subject do
       Preposition.new seed
+    end
+
+    describe 'seed-based rules' do
+      it 'should have exactly 5 letters' do
+        subject.word_length.should == 5
+      end
+
+      it 'should end with a foo letter' do
+        subject.last_letter_group.should == :foo
+      end
+
+      it 'should not contain the letter "w"' do
+        subject.invalid_letter.should == 'w'
+      end
     end
 
     shared_examples_for 'invalid preposition' do

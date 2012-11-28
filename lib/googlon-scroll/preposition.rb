@@ -13,6 +13,18 @@ module GooglonScroll
         valid_letters?(word)
     end
 
+    def last_letter_group
+      @last_letter_group ||= random.rand > LAST_BAR_LETTER_PROB ? :bar : :foo
+    end
+
+    def word_length
+      @word_length ||= random.rand LENGTH_RANGE
+    end
+
+    def invalid_letter
+      @invalid_letter ||= letter.send("#{last_letter_group}_letters")[0]
+    end
+
     private
 
     def valid_word_length?(word)
@@ -25,18 +37,6 @@ module GooglonScroll
 
     def valid_letters?(word)
       word.chars.all? { |ch| ch != invalid_letter }
-    end
-
-    def invalid_letter
-      @invalid_letter ||= letter.send("#{last_letter_group}_letters")[0]
-    end
-
-    def last_letter_group
-      @last_letter_group ||= random.rand > LAST_BAR_LETTER_PROB ? :bar : :foo
-    end
-
-    def word_length
-      @word_length ||= random.rand LENGTH_RANGE
     end
   end
 end

@@ -2,13 +2,22 @@ require 'spec_helper'
 
 module GooglonScroll
   describe Word do
-    # This seed generates the following pretty number rules:
-    # - Must be greater than or equal to 65725
-    # - Must be divisible by 5
     let(:seed) { 123 }
 
     subject do
       Word.new seed
+    end
+
+    describe 'seed-based rules' do
+      context 'pretty-numbers' do
+        it 'should be greater or equal to 65725' do
+          subject.min_pretty_number.should == 65725
+        end
+
+        it 'should be divisible by 5' do
+          subject.pretty_number_divisor.should == 5
+        end
+      end
     end
 
     describe '#as_number' do

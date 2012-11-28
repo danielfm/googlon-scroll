@@ -25,14 +25,12 @@ module GooglonScroll
         word_as_number % pretty_number_divisor == 0
     end
 
-    private
-
     def pretty_number_divisor
-      random.rand PRETTY_NUMBER_DIVISOR_RANGE
+      @pretty_number_divisor ||= random.rand PRETTY_NUMBER_DIVISOR_RANGE
     end
 
     def min_pretty_number
-      new_random.rand PRETTY_NUMBER_MIN_RANGE
+      @min_pretty_number ||= new_random.rand PRETTY_NUMBER_MIN_RANGE
     end
   end
 end
