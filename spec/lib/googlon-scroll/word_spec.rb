@@ -8,14 +8,28 @@ module GooglonScroll
       Word.new seed
     end
 
-    describe 'seed-based rules' do
-      context 'pretty-numbers' do
-        it 'should be greater or equal to 65725' do
-          subject.min_pretty_number.should == 65725
-        end
+    describe '#pretty_number_divisor' do
+      it 'should be 5 given the seed' do
+        subject.pretty_number_divisor.should == 5
+      end
 
-        it 'should be divisible by 5' do
-          subject.pretty_number_divisor.should == 5
+      context 'when called multiple times' do
+        it 'should calculate the value once' do
+          subject.should_receive(:new_random).once.and_call_original
+          3.times { subject.pretty_number_divisor }
+        end
+      end
+    end
+
+    describe '#min_pretty_number' do
+      it 'should be 65725 given the seed' do
+        subject.min_pretty_number.should == 65725
+      end
+
+      context 'when called multiple times' do
+        it 'should calculate the value once' do
+          subject.should_receive(:new_random).once.and_call_original
+          3.times { subject.min_pretty_number }
         end
       end
     end
@@ -24,7 +38,7 @@ module GooglonScroll
       let(:word) { 'unxgtjbly' }
 
       it 'should calculate the number for the word' do
-        subject.as_number(word).should == 485_146_769_391
+        subject.as_number(word).should == 441_384_536_230
       end
     end
 

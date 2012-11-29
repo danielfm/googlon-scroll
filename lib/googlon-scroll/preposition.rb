@@ -8,17 +8,16 @@ module GooglonScroll
     end
 
     def valid?(word)
-      new_random
       valid_word_length?(word) and valid_last_letter?(word) and
         valid_letters?(word)
     end
 
     def last_letter_group
-      @last_letter_group ||= random.rand > LAST_BAR_LETTER_PROB ? :bar : :foo
+      @last_letter_group ||= new_random(1).rand > LAST_BAR_LETTER_PROB ? :bar : :foo
     end
 
     def word_length
-      @word_length ||= random.rand LENGTH_RANGE
+      @word_length ||= new_random.rand LENGTH_RANGE
     end
 
     def invalid_letter

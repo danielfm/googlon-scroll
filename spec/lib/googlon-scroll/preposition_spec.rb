@@ -8,17 +8,42 @@ module GooglonScroll
       Preposition.new seed
     end
 
-    describe 'seed-based rules' do
-      it 'should have exactly 5 letters' do
+    describe '#word_length' do
+      it 'should be 5 given the seed' do
         subject.word_length.should == 5
       end
 
-      it 'should end with a foo letter' do
+      context 'when called multiple times' do
+        it 'should calculate the value once' do
+          subject.should_receive(:new_random).once.and_call_original
+          3.times { subject.word_length }
+        end
+      end
+    end
+
+    describe '#last_letter_group' do
+      it 'should be :foo given the seed' do
         subject.last_letter_group.should == :foo
       end
 
-      it 'should not contain the letter "w"' do
+      context 'when called multiple times' do
+        it 'should calculate the value once' do
+          subject.should_receive(:new_random).once.and_call_original
+          3.times { subject.last_letter_group }
+        end
+      end
+    end
+
+    describe '#invalid_letter' do
+      it 'should be "w" given the seed' do
         subject.invalid_letter.should == 'w'
+      end
+
+      context 'when called multiple times' do
+        it 'should calculate the value once' do
+          subject.letter.should_receive(:foo_letters).once.and_call_original
+          3.times { subject.invalid_letter }
+        end
       end
     end
 

@@ -26,7 +26,7 @@ module GooglonScroll
     end
 
     def pretty_number_divisor
-      @pretty_number_divisor ||= random.rand PRETTY_NUMBER_DIVISOR_RANGE
+      @pretty_number_divisor ||= new_random(1).rand PRETTY_NUMBER_DIVISOR_RANGE
     end
 
     def min_pretty_number

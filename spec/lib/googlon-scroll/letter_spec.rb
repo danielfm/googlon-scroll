@@ -17,7 +17,7 @@ module GooglonScroll
       end
 
       context 'when called multiple times' do
-        it 'should calculate the random alphabet only once' do
+        it 'should calculate the random alphabet once' do
           subject.should_receive(:random_alphabet).once.and_call_original
           3.times { subject.foo_letters }
         end
@@ -30,7 +30,7 @@ module GooglonScroll
       end
 
       context 'when called multiple times' do
-        it 'should calculate the random alphabet only once' do
+        it 'should calculate the random alphabet once' do
           subject.should_receive(:random_alphabet).once.and_call_original
           3.times { subject.bar_letters }
         end
@@ -67,7 +67,14 @@ module GooglonScroll
 
     describe '#alphabet' do
       it 'should return the letters in lexicographical order' do
-        subject.alphabet.should == %w{b o e x w a g t j n c u q k d v r z y l}
+        subject.alphabet.should == %w{x v r a l o w g k c u n j t d e b y z q}
+      end
+
+      context 'when called multiple times' do
+        it 'should calculate the value once' do
+          subject.should_receive(:random_alphabet).once.and_call_original
+          3.times { subject.alphabet }
+        end
       end
     end
 
@@ -94,8 +101,8 @@ module GooglonScroll
         end
 
         context 'when all letters are different' do
-          let(:scrambled_words) { %w{xea box} }
-          let(:ordered_words)   { %w{box xea} }
+          let(:scrambled_words) { %w{box xea} }
+          let(:ordered_words)   { %w{xea box} }
 
           it_should_behave_like 'words in lexicographical order'
         end
@@ -110,8 +117,8 @@ module GooglonScroll
         end
 
         context 'when the longer word occurs before the sorter word' do
-          let(:scrambled_words) { %w{xoa xowt} }
-          let(:ordered_words)   { %w{xowt xoa} }
+          let(:scrambled_words) { %w{xowt xoa} }
+          let(:ordered_words)   { %w{xoa xowt} }
 
           it_should_behave_like 'words in lexicographical order'
         end

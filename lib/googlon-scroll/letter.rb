@@ -43,7 +43,7 @@ module GooglonScroll
     end
 
     def alphabet
-      @alphabet ||= random_alphabet.shuffle(random: random)
+      @alphabet ||= random_alphabet.shuffle(random: new_random)
     end
 
     private
@@ -53,8 +53,7 @@ module GooglonScroll
     end
 
     def random_alphabet
-      @random_alphabet ||= ('a'..'z').to_a \
-        .shuffle(random: new_random)[0...NUMBER_OF_LETTERS]
+      @random_alphabet ||= ('a'..'z').to_a.shuffle(random: new_random)[0...NUMBER_OF_LETTERS]
     end
   end
 end
