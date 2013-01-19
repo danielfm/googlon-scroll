@@ -35,8 +35,8 @@ module GooglonScroll
       index_of = lambda { |letter| indexes[letter] }
 
       lambda { |word_1, word_2|
-        indexes_1 = word_1.chars.collect &index_of
-        indexes_2 = word_2.chars.collect &index_of
+        indexes_1 = word_1.chars.collect(&index_of)
+        indexes_2 = word_2.chars.collect(&index_of)
 
         indexes_1 <=> indexes_2
       }
