@@ -35,10 +35,10 @@ module GooglonScroll
     end
 
     describe '#as_number' do
-      let(:word) { 'unxgtjbly' }
+      let(:word) { 'uqxwpjbls' }
 
       it 'should calculate the number for the word' do
-        subject.as_number(word).should == 441_384_536_230
+        subject.as_number(word).should == 411_998_464_945
       end
     end
 

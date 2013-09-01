@@ -61,7 +61,7 @@ module GooglonScroll
 
     describe '#valid?' do
       context 'for a valid preposition' do
-        let(:word) { 'dljbv' }
+        let(:word) { 'dljbx' }
         it_should_behave_like 'valid preposition'
       end
 

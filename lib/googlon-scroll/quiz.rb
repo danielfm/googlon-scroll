@@ -8,7 +8,7 @@ module GooglonScroll
     attr_reader :seed, :letter, :word, :verb, :preposition
 
     def initialize(random_seed=nil)
-      @seed = random_seed || Random.new.seed
+      @seed = random_seed || Random.new_seed
 
       @letter      = Letter.new seed
       @word        = Word.new seed

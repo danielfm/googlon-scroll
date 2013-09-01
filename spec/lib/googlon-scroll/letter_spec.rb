@@ -4,8 +4,8 @@ module GooglonScroll
   describe Letter do
     let(:seed) { 123 }
 
-    let(:foo_letters) { %w{w v o c y z} }
-    let(:bar_letters) { %w{d l j b r e a q k x g u n t}  }
+    let(:foo_letters) { %w{w f h i x l} }
+    let(:bar_letters) { %w{s u m z e d q o v j p a b k} }
 
     subject do
       Letter.new seed
@@ -67,7 +67,7 @@ module GooglonScroll
 
     describe '#alphabet' do
       it 'should return the letters in lexicographical order' do
-        subject.alphabet.should == %w{x v r a l o w g k c u n j t d e b y z q}
+        subject.alphabet.should == %w{v l x a m u k q w j p z d e i f s b h o}
       end
 
       context 'when called multiple times' do
@@ -94,8 +94,8 @@ module GooglonScroll
         end
 
         context 'when only the first letter is equal' do
-          let(:scrambled_words) { %w{xea xox} }
-          let(:ordered_words)   { %w{xox xea} }
+          let(:scrambled_words) { %w{xox xea} }
+          let(:ordered_words)   { %w{xea xox} }
 
           it_should_behave_like 'words in lexicographical order'
         end
