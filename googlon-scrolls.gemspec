@@ -17,6 +17,5 @@ Gem::Specification.new do |gem|
   gem.version       = GooglonScroll::VERSION
 
   gem.add_development_dependency 'debugger'
-  gem.add_development_dependency 'simplecov'
   gem.add_development_dependency 'rspec', '~> 2.12.0'
 end
