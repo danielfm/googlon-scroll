@@ -10,7 +10,7 @@ module GooglonScroll
     end
 
     def text
-      word = fist_word_from text_a
+      word = first_word_from text_a
 
       @text ||= <<-EOF
 Archeologists found a misterious scroll containing two texts:
